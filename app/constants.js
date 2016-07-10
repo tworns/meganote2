@@ -1,5 +1,4 @@
 {
   angular.module('meganote')
-    .constant('API_BASE', 'http://localhost:3030/')
-    .constant('');
+    .constant('API_BASE', 'http://localhost:3030/');
 }

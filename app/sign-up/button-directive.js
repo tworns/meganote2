@@ -1,5 +1,5 @@
 {
-  angular.module('meganote.signup').directive('xtLogin',xtLogin);
+  angular.module('meganote.signUp').directive('xtLogin',xtLogin);
 
   function xtLogin(){
     return {
