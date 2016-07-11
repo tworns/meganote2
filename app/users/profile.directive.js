@@ -8,7 +8,7 @@
           vm.user = CurrentUser.get();
         }
         submit () {
-          console.log('Submitted');
+
         }
 
       }
