@@ -24,10 +24,10 @@
           }
           //update user
           update(user){
-            return $http.put(`apiURI${user._id}`,{
+            return $http.put(`${apiURI}${user._id}`,{
               user}).then(res => {
-                // CurrentUser.set(res.data.user);
-                console.log(res.data);
+                CurrentUser.set(res.data.user);
+                //console.log(res.data);
               });
           }
         }
