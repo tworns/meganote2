@@ -27,6 +27,9 @@ header .well {
     color: #ccc; }
     header .well .user-links a {
       cursor: pointer; }
+    a.profile {
+        color: #ccc;
+      }
 
 a:link, a:visited, a:hover, a:active {
   color: #FE5F55; }
