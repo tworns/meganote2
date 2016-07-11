@@ -30,6 +30,19 @@
                 //console.log(res.data);
               });
           }
+
+          //login
+          login(user){
+            return $http.post(`{API_BASE}/session/`, {
+              user
+            })
+            .then(
+              (res) => {
+                AuthToken.set(res.data.user);
+                CurrentUser.set(res.data.user);
+              }
+            );
+          }
         }
         return new UsersService();
 

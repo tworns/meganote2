@@ -1,12 +1,12 @@
 {
-  angular.module('meganote.signIn').directive('signIn', [
-    () => {
+  angular.module('meganote.signIn').directive('signIn', [ '$state', 'UsersService',
+    ($state, UsersService) => {
       class SignInController{
         constructor(){
 
         }
         submit(){
-            console.log('submitted');
+          UsersService.login(this.user);
         }
       }
       return {
