@@ -15,7 +15,7 @@
       }
       clear(){
         this.user = undefined;
-        $window.localStorage.remove('currentUser');
+        $window.localStorage.removeItem('currentUser');
       }
     }
     return new CurrentUser();

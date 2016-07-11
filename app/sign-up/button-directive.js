@@ -16,22 +16,24 @@
     vm.logout = logout;
     vm.login = login;
     vm.isLoggedIn = isLoggedIn;
-    vm.btnTxt = 'login';
+    vm.btnTxt = 'Login';
     vm.user = CurrentUser.get();
 
 
     function isLoggedIn() {
       if(AuthToken.get() === undefined){
+        vm.btnTxt = 'Login';
         return false;
       }
       else {
+        vm.btnTxt = 'Logout';
         return true;
       }
     }
     function logout (){
       AuthToken.clear();
       CurrentUser.clear();
-      $state.go('signUp');
+      $state.go('sign-up');
     }
     function login (){
       CurrentUser.set(vm.user);

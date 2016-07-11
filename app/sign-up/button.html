@@ -1,5 +1,4 @@
 <div>
-  <button ng-show = "!vm.isLoggedIn()">Log In</button>
-  <button ng-show = "vm.isLoggedIn()">Log Out</button>
-
+  <button class = "btn" ng-show = "!vm.isLoggedIn()">Log In</button>
+  <button class = "btn" ng-show = "vm.isLoggedIn()" ng-click = "vm.logout()">Log Out</button>
 </div>
