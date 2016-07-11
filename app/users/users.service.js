@@ -11,7 +11,7 @@
         const apiURI = `${API_BASE}users/`;
         class UsersService {
           create(user) {
-            return $http.post(`${apiURI}users`, {
+            return $http.post(`${apiURI}`, {
               user
             })
               .then(

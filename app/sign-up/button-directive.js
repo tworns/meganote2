@@ -6,13 +6,16 @@
       constructor () {
 
       }
-      user () {
-        
+      user() {
+        return CurrentUser.get();
+      }
+      signedIn() {
+        return CurrentUser.signedIn();
       }
     }
 
     return {
-      template: `<div class = "user-links">Signed in as: {{vm.user().name}} </div>`,
+      template: `<div class = "user-links" ng-show = "vm.signedIn()">Signed in as: {{vm.user().name}} </div>`,
       restrict: 'E',
       controller: ButtonController,
       controllerAs: 'vm',
