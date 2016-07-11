@@ -1,15 +1,26 @@
 (function(){
-  angular.module('meganote.signUp').directive('xtLogin',xtLogin);
+  angular.module('meganote.signUp').directive('xtLogin',
 
-  function xtLogin(){
+  [  'CurrentUser', (CurrentUser) => {
+    class ButtonController {
+      constructor () {
+
+      }
+      user () {
+        
+      }
+    }
+
     return {
-      templateUrl: '/sign-up/button.html',
+      template: `<div class = "user-links">Signed in as: {{vm.user().name}} </div>`,
       restrict: 'E',
       controller: ButtonController,
       controllerAs: 'vm',
+      bindToController: true,
       scope: {},
     };
-  }
+  }]
+  );
   ButtonController.$inject = ['$state','AuthToken', 'CurrentUser'];
   function ButtonController($state, AuthToken, CurrentUser){
     var vm = this;
@@ -18,6 +29,7 @@
     vm.isLoggedIn = isLoggedIn;
     vm.btnTxt = 'Login';
     vm.user = CurrentUser.get();
+    vm.username = vm.user.username;
 
 
     function isLoggedIn() {

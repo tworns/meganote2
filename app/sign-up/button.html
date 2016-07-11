@@ -1,4 +1,7 @@
-<div>
-  <button class = "btn" ng-show = "!vm.isLoggedIn()">Log In</button>
-  <button class = "btn" ng-show = "vm.isLoggedIn()" ng-click = "vm.logout()">Log Out</button>
+<div class="row">
+  <div class="col-xs-6">
+    {{vm.username}}
+    <button align  = "right" class = "btn" ng-show = "!vm.isLoggedIn()">Log In</button>
+    <button class = "btn" ng-show = "vm.isLoggedIn()" ng-click = "vm.logout()">Log Out</button>
+  </div>
 </div>
