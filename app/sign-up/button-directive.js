@@ -1,4 +1,4 @@
-(function(){
+{
   angular.module('meganote.signUp').directive('xtLogin',
 
   [  'CurrentUser', (CurrentUser) => {
@@ -15,7 +15,10 @@
     }
 
     return {
-      template: `<div class = "user-links" ng-show = "vm.signedIn()">Signed in as: {{vm.user().name}} </div>`,
+      template: `<div class = "user-links" >
+      <span ng-show = "vm.signedIn()">Signed in as: {{vm.user().name}}</span>
+      <span ng-show = "!vm.signedIn()"> <a ui-sref ="sign-up">Sign up for Meganote today!</a></span>
+      </div>`,
       restrict: 'E',
       controller: ButtonController,
       controllerAs: 'vm',
@@ -24,36 +27,4 @@
     };
   }]
   );
-  ButtonController.$inject = ['$state','AuthToken', 'CurrentUser'];
-  function ButtonController($state, AuthToken, CurrentUser){
-    var vm = this;
-    vm.logout = logout;
-    vm.login = login;
-    vm.isLoggedIn = isLoggedIn;
-    vm.btnTxt = 'Login';
-    vm.user = CurrentUser.get();
-    vm.username = vm.user.username;
-
-
-    function isLoggedIn() {
-      if(AuthToken.get() === undefined){
-        vm.btnTxt = 'Login';
-        return false;
-      }
-      else {
-        vm.btnTxt = 'Logout';
-        return true;
-      }
-    }
-    function logout (){
-      AuthToken.clear();
-      CurrentUser.clear();
-      $state.go('sign-up');
-    }
-    function login (){
-      CurrentUser.set(vm.user);
-      AuthToken.set(vm.user);
-      $state.go('notes');
-    }
-  }
-})();
+}
