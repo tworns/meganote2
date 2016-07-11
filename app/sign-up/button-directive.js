@@ -1,9 +1,9 @@
-{
+(function(){
   angular.module('meganote.signUp').directive('xtLogin',xtLogin);
 
   function xtLogin(){
     return {
-      templateUrl: 'app/sign-up/button.html',
+      templateUrl: '/sign-up/button.html',
       restrict: 'E',
       controller: ButtonController,
       controllerAs: 'vm',
@@ -15,17 +15,19 @@
     var vm = this;
     vm.logout = logout;
     vm.login = login;
+    vm.isLoggedIn = isLoggedIn;
     vm.btnTxt = 'login';
     vm.user = CurrentUser.get();
-    if(AuthToken.get() === undefined){
-      vm.btnTxt = 'login';
-      vm.logout();
-    }
-    else {
-      vm.btnTxt = 'logout';
-      vm.login();
-    }
 
+
+    function isLoggedIn() {
+      if(AuthToken.get() === undefined){
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
     function logout (){
       AuthToken.clear();
       CurrentUser.clear();
@@ -37,4 +39,4 @@
       $state.go('notes');
     }
   }
-}
+})();
