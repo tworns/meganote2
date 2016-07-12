@@ -18,8 +18,14 @@
             })
               .then(
                 (res) => {
-                  AuthToken.set(res.data.authToken);
-                  CurrentUser.set(res.data.user);
+                  if(res.status === 200){
+                    Flash.create('success', 'Created User successfully');
+                    AuthToken.set(res.data.authToken);
+                    CurrentUser.set(res.data.user);
+                  }
+                  else {
+                    Flash.create('warning', `Failed to create User: ${res.statusText}` );
+                  }
                 }
               );
           }
@@ -27,7 +33,13 @@
           update(user){
             return $http.put(`${apiURI}${user._id}`,{
               user}).then(res => {
-                CurrentUser.set(res.data.user);
+                if(res.status === 200){
+                  Flash.create('success', 'Updated successfully');
+                  CurrentUser.set(res.data.user);
+                }
+                else {
+                  Flash.create('warning', `Failed to update: ${res.statusText}`);
+                }
                 //console.log(res.data);
               });
           }
