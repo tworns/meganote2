@@ -5,9 +5,10 @@
       'API_BASE',
       'AuthToken',
       'CurrentUser',
+      'Flash',
       ($http, API_BASE,
       AuthToken,
-      CurrentUser) => {
+      CurrentUser, Flash) => {
         const apiURI = `${API_BASE}users/`;
         class UsersService {
           //create user
@@ -33,13 +34,21 @@
 
           //login
           login(user){
-            return $http.post(`{API_BASE}/session/`, {
+            this.message = 'Unable to log user in.';
+            return $http.post(`${API_BASE}/session/`, {
               user
             })
             .then(
               (res) => {
-                AuthToken.set(res.data.user);
-                CurrentUser.set(res.data.user);
+                if(CurrentUser.get().isLoggedIn !== true){
+                  Flash.create('danger', 'Failed to log in.');
+                }
+                else {
+                  Flash.create('success', 'Logged in successfully');
+                  AuthToken.set(res.data.user);
+                  CurrentUser.set(res.data.user);
+                }
+
               }
             );
           }
