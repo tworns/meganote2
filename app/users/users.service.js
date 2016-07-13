@@ -18,14 +18,12 @@
             })
               .then(
                 (res) => {
-                  if(res.status === 200){
-                    Flash.create('success', 'Created User successfully');
-                    AuthToken.set(res.data.authToken);
-                    CurrentUser.set(res.data.user);
-                  }
-                  else {
-                    Flash.create('warning', `Failed to create User: ${res.statusText}` );
-                  }
+                  Flash.create('success', 'Created User successfully');
+                  AuthToken.set(res.data.authToken);
+                  CurrentUser.set(res.data.user);
+                },
+                (res) => {
+                  Flash.create('warning', `Failed to create User: ${res.data.errors.username.message}`);
                 }
               );
           }

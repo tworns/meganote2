@@ -18,7 +18,7 @@
           <div class="row">
             <div class="col-xs-6 col-xs-offset-4">
               <h3>Welcome back!</h3>
-              <form id="new_user" ng-submit="vm.submit()">
+              <form id="new_user" ng-submit="vm.submit()" noValidate>
                 <p>
                   <label for="username">Username</label><br>
                   <input

@@ -13,6 +13,6 @@
 
   config.$inject = ['$urlRouterProvider'];
   function config($urlRouterProvider) {
-    $urlRouterProvider.otherwise('/sign-up/');
+    $urlRouterProvider.otherwise('/sign-up');
   }
 }

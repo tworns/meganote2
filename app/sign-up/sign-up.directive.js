@@ -15,13 +15,7 @@
           submit() {
             UsersService.create(this.user).then(
               ()=> {
-                if(!CurrentUser.signedIn()){
-                  Flash.create('danger', 'Failed to create user.');
-                }
-                else {
-                  Flash.create('success', 'Created user!');
-                  $state.go('notes.form', {noteId: undefined});
-                }
+                $state.go('notes.form', {noteId: undefined});
               });
 
           }
