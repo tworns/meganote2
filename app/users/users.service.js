@@ -23,8 +23,6 @@
                   CurrentUser.set(res.data.user);
                 },
                 (res) => {
-                  console.log(res);
-                  console.log(!!res.errors);
                   if(res.data.message.toLowerCase() !=='user validation failed'){
                     Flash.create('warning', `Failed to create user: ${res.data.message}` );
                   }
@@ -66,7 +64,7 @@
                 $state.go('notes.form');
               },
                 () => {
-                  Flash.create('danger', 'Failed to log in.');
+                  Flash.create('danger', 'UNATHORIZED: Incorrect password or username.');
                 }
 
 
