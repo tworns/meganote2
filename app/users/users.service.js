@@ -23,7 +23,17 @@
                   CurrentUser.set(res.data.user);
                 },
                 (res) => {
-                  Flash.create('warning', `Failed to create User: ${res.data.errors.username.message}`);
+                  console.log(res);
+                  console.log(!!res.errors);
+                  if(res.data.message.toLowerCase() !=='user validation failed'){
+                    Flash.create('warning', `Failed to create user: ${res.data.message}` );
+                  }
+                  else if(!res.errors){
+                    Flash.create('warning', `Failed to create user: ${res.data.errors.username.message}`);
+                  }
+                  else{
+                    Flash.create('warning', `Failed to create user: ${res.statusText}`);
+                  }
                 }
               );
           }

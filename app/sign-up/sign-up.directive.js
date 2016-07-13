@@ -4,9 +4,8 @@
 
       'UsersService',
       '$state',
-      'Flash',
-      'CurrentUser',
-      (UsersService, $state, Flash, CurrentUser) => {
+
+      (UsersService, $state) => {
 
         class SignUpController {
           constructor() {
