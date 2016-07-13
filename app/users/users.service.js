@@ -40,7 +40,7 @@
                 else {
                   Flash.create('warning', `Failed to update: ${res.statusText}`);
                 }
-                //console.log(res.data);
+
               });
           }
 
@@ -52,17 +52,16 @@
             })
             .then(
               (res) => {
-                AuthToken.set(res.data.user);
+                AuthToken.set(res.data.authToken);
                 CurrentUser.set(res.data.user);
-                if(!CurrentUser.signedIn()){
+                Flash.create('success', 'Logged in successfully');
+                $state.go('notes.form');
+              },
+                () => {
                   Flash.create('danger', 'Failed to log in.');
                 }
-                else {
-                  Flash.create('success', 'Logged in successfully');
-                  $state.go('notes.form');
-                }
 
-              }
+
             );
           }
         }

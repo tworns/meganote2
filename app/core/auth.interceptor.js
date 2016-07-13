@@ -11,7 +11,7 @@
           req.headers.Authorization = token;
         }
         return req;
-      },
+      }
     };
 
   }
